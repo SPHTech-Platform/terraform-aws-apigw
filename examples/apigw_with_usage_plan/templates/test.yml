@@ -1,0 +1,835 @@
+---
+swagger: "2.0"
+info:
+  description: "Newshub authentication api."
+  version: "0.0.0"
+  title: "NewshubAPIV2"
+host: "dsnewsapi.sphdigital.com"
+basePath: "/v2"
+schemes:
+- "https"
+paths:
+  /auth/in-app/device:
+    get:
+      operationId: "inAppDevice"
+      parameters:
+      - name: "authorization"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "GET"
+        uri: "http://${stageVariables.auth_url}/in-app/device"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/in-app/products/{pub}/{device}:
+    get:
+      operationId: "GetProductList"
+      parameters:
+      - name: "device"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "region"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pub"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "GET"
+        uri: "http://${stageVariables.auth_url}/in-app/products/{pub}/{device}"
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.path.pub: "method.request.path.pub"
+          integration.request.path.device: "method.request.path.device"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/in-app/verify:
+    post:
+      operationId: "inAppVerifyReceipt"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "InAppVerifyRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/InAppVerifyRequestBody"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "POST"
+        uri: "http://${stageVariables.auth_url}/in-app/verify"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/in-app/webhook:
+    post:
+      operationId: "inAppWebhook"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "InAppWebhook"
+        required: true
+        schema:
+          $ref: "#/definitions/InAppWebhook"
+      responses:
+        "200":
+          description: "200 response"
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "POST"
+        uri: "http://${stageVariables.auth_url}/in-app/webhook"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/my-sph/check-device:
+    get:
+      operationId: "mySPHCheckDevice"
+      parameters:
+      - name: "authorization"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "GET"
+        uri: "http://${stageVariables.auth_url}/my-sph/check-device"
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.header.authorization: "method.request.header.authorization"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/my-sph/facebooklogin:
+    post:
+      operationId: "facebookLogin"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "TokenLoginRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/TokenLoginRequestBody"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "POST"
+        uri: "http://${stageVariables.auth_url}/my-sph/facebooklogin"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/my-sph/googlelogin:
+    post:
+      operationId: "googleLogin"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "TokenLoginRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/TokenLoginRequestBody"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "POST"
+        uri: "http://${stageVariables.auth_url}/my-sph/googlelogin"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/my-sph/login:
+    post:
+      operationId: "mySphLogin"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "MySPHLoginRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/MySPHLoginRequestBody"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "POST"
+        uri: "http://${stageVariables.auth_url}/my-sph/login"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/my-sph/logout:
+    post:
+      operationId: "mySPHLogout"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "authorization"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "MySPHLogoutRequest"
+        required: true
+        schema:
+          $ref: "#/definitions/MySPHLogoutRequest"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "POST"
+        uri: "http://${stageVariables.auth_url}/my-sph/logout"
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.header.authorization: "method.request.header.authorization"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/my-sph/register:
+    post:
+      operationId: "mySphRegister"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "MySPHRegisterRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/MySPHRegisterRequestBody"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "POST"
+        uri: "http://${stageVariables.auth_url}/my-sph/register"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  /auth/my-sph/session:
+    delete:
+      operationId: "clearUserSession"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ClearUserSessionRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/ClearUserSessionRequestBody"
+      responses:
+        "200":
+          description: "200 response"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        connectionId: "${stageVariables.auth_vpclink}"
+        httpMethod: "DELETE"
+        uri: "http://${stageVariables.auth_url}/my-sph/session"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        connectionType: "VPC_LINK"
+        type: "http_proxy"
+  
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  LatestReceipt:
+    type: "object"
+    required:
+    - "expires_date"
+    - "original_transaction_id"
+    properties:
+      expires_date:
+        type: "string"
+      original_transaction_id:
+        type: "string"
+  MySPHRegisterRequestBody:
+    type: "object"
+    required:
+    - "firstName"
+    - "goto"
+    - "lastName"
+    - "password"
+    - "serviceFlag"
+    - "username"
+    properties:
+      firstName:
+        type: "string"
+      goto:
+        type: "string"
+      lastName:
+        type: "string"
+      password:
+        type: "string"
+      serviceFlag:
+        type: "string"
+      username:
+        type: "string"
+    description: "A MySPHRegisterRequestBody model\nthis is used for request to register\
+      \ MySPH account"
+  SomethingWentWrong:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int64"
+      message:
+        type: "string"
+  InAppProductRequestParamsBody:
+    type: "object"
+    required:
+    - "packageName"
+    - "serviceCode"
+    properties:
+      packageName:
+        type: "string"
+      serviceCode:
+        type: "string"
+  MalformedBodyPayload:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int64"
+      message:
+        type: "string"
+  JWTTokenSuccess:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int64"
+      message:
+        type: "string"
+  MySPHLoginRequestBody:
+    type: "object"
+    required:
+    - "appName"
+    - "appVersion"
+    - "deviceCode"
+    - "deviceId"
+    - "deviceName"
+    - "osName"
+    - "osVersion"
+    - "password"
+    - "serviceCode"
+    - "username"
+    properties:
+      appName:
+        type: "string"
+      appVersion:
+        type: "string"
+      deviceCode:
+        type: "string"
+      deviceId:
+        type: "string"
+      deviceName:
+        type: "string"
+      osName:
+        type: "string"
+      osVersion:
+        type: "string"
+      password:
+        type: "string"
+      serviceCode:
+        type: "string"
+      username:
+        type: "string"
+    description: "A MySPHLoginRequestBody model\nthis is used for request to login\
+      \ to MySPH"
+  InAppWebhook:
+    type: "object"
+    required:
+    - "latest_receipt_info"
+    properties:
+      latest_receipt_info:
+        $ref: "#/definitions/LatestReceipt"
+      notification_type:
+        type: "string"
+  PushUpdateTopicRequest:
+    type: "object"
+    required:
+    - "deviceId"
+    - "tokens"
+    - "topics"
+    properties:
+      deviceId:
+        type: "string"
+        description: "Device ID of the user"
+      tokens:
+        type: "object"
+        properties:
+          firebase:
+            type: "string"
+            description: "Firebase Cloud Messaging"
+          onesignal:
+            type: "string"
+            description: "Onesignal Player ID"
+      topics:
+        type: "object"
+        description: "Topics that can be registered will depend on the `/pubtopics/`\
+          \ list"
+        properties:
+          topicName1:
+            type: "integer"
+          topicName2:
+            type: "integer"
+    description: "Device User information"
+  PushTokenRequestBody:
+    type: "object"
+    required:
+    - "deviceId"
+    - "platform"
+    - "provider"
+    - "pub"
+    - "token"
+    properties:
+      deviceId:
+        type: "string"
+      platform:
+        type: "string"
+      provider:
+        type: "string"
+      pub:
+        type: "string"
+      token:
+        type: "string"
+    description: "Push Provider Token Model"
+  SwgRequestParamsBody:
+    type: "object"
+    required:
+    - "appName"
+    - "appVersion"
+    - "authCode"
+    - "deviceCode"
+    - "deviceId"
+    - "deviceName"
+    - "osName"
+    - "osVersion"
+    - "redirectUri"
+    - "serviceCode"
+    properties:
+      appName:
+        type: "string"
+      appVersion:
+        type: "string"
+      authCode:
+        type: "string"
+      deviceCode:
+        type: "string"
+      deviceId:
+        type: "string"
+      deviceName:
+        type: "string"
+      osName:
+        type: "string"
+      osVersion:
+        type: "string"
+      redirectUri:
+        type: "string"
+      serviceCode:
+        type: "string"
+    description: "A SwgRequestParamsBody model"
+  RalphApiRequest:
+    type: "object"
+    required:
+    - "action"
+    - "articleId"
+    - "isSubscriber"
+    - "min_articles_read_threshold"
+    - "mysphid"
+    - "platform"
+    - "publication"
+    properties:
+      action:
+        type: "string"
+      articleId:
+        type: "string"
+      isSubscriber:
+        type: "integer"
+        format: "int64"
+      min_articles_read_threshold:
+        type: "integer"
+        format: "int64"
+      mysphid:
+        type: "string"
+      platform:
+        type: "string"
+      publication:
+        type: "string"
+    description: "RalphApiRequest model\nthis is used for request to read daily count\
+      \ from Ralph"
+  RefreshSessionRequestParamsBody:
+    type: "object"
+    required:
+    - "appName"
+    - "appVersion"
+    - "deviceCode"
+    - "deviceId"
+    - "deviceName"
+    - "mySPHRefreshToken"
+    - "osName"
+    - "osVersion"
+    - "serviceCode"
+    properties:
+      appName:
+        type: "string"
+      appVersion:
+        type: "string"
+      checkSwg:
+        type: "boolean"
+      deviceCode:
+        type: "string"
+      deviceId:
+        type: "string"
+      deviceName:
+        type: "string"
+      googleAuthCode:
+        type: "string"
+      mySPHRefreshToken:
+        type: "string"
+      osName:
+        type: "string"
+      osVersion:
+        type: "string"
+      serviceCode:
+        type: "string"
+    description: "A RefreshSessionRequestParamsBody model"
+  InappVerifyRequestParamsBody:
+    type: "object"
+    required:
+    - "deviceId"
+    - "packageName"
+    - "purchaseToken"
+    - "serviceCode"
+    - "subscriptionId"
+    properties:
+      deviceId:
+        type: "string"
+      packageName:
+        type: "string"
+      purchaseToken:
+        type: "string"
+      serviceCode:
+        type: "string"
+      subscriptionId:
+        type: "string"
+    description: "A InappVerifyRequestParamsBody model"
+  PushTopicRequestBody:
+    type: "object"
+    required:
+    - "deviceId"
+    - "platform"
+    - "provider"
+    - "pub"
+    - "token"
+    - "topic"
+    properties:
+      deviceId:
+        type: "string"
+      platform:
+        type: "string"
+      provider:
+        type: "string"
+      pub:
+        type: "string"
+      token:
+        type: "string"
+      topic:
+        type: "string"
+    description: "Model for the Request when subscribing to a topic"
+  MySPHLogoutRequest:
+    type: "object"
+    properties:
+      deviceId:
+        type: "string"
+    description: "A MySPHLogoutRequest model\nthis is used for request to logout from\
+      \ MySPH"
+  DeviceDisplaySubscription:
+    type: "object"
+    required:
+    - "deviceId"
+    properties:
+      deviceId:
+        type: "string"
+        description: "Device ID of the user"
+    description: "Payload to indicate the user device information"
+  LogoutRequestParamsBody:
+    type: "object"
+    properties:
+      deviceId:
+        type: "string"
+      revokeToken:
+        type: "boolean"
+      sessionId:
+        type: "string"
+    description: "LogoutRequestParamsBody : it is the body of logout request params"
+  PushLoginRequestBody:
+    type: "object"
+    required:
+    - "deviceId"
+    - "tokens"
+    properties:
+      deviceId:
+        type: "string"
+        description: "Device ID of the user"
+      pushToken:
+        type: "string"
+        description: "APNS Token or Firebase Token"
+      tokens:
+        type: "object"
+        properties:
+          firebase:
+            type: "string"
+            description: "Firebase Cloud Messaging"
+          onesignal:
+            type: "string"
+            description: "Onesignal Player ID"
+    description: "Payload to indicate the user device information"
+  InAppVerifyRequestBody:
+    type: "object"
+    required:
+    - "deviceId"
+    - "receiptData"
+    properties:
+      deviceId:
+        type: "string"
+      receiptData:
+        type: "string"
+      serviceCode:
+        type: "string"
+    description: "A Verify device parameter model"
+  LogoutRequestBody:
+    type: "object"
+    required:
+    - "deviceId"
+    - "tokens"
+    properties:
+      deviceId:
+        type: "string"
+        description: "Device ID of the user"
+      tokens:
+        type: "object"
+        properties:
+          firebase:
+            type: "string"
+            description: "Firebase Cloud Messaging"
+          onesignal:
+            type: "string"
+            description: "Onesignal Player ID"
+    description: "Logout from all premium users topics e.g. `autodownload` , `moe_*`"
+  DeleteAccountRequestParamsBody:
+    type: "object"
+    required:
+    - "reason"
+    - "userid"
+    properties:
+      reason:
+        type: "string"
+      testEmail:
+        type: "string"
+      userid:
+        type: "string"
+  TokenLoginRequestBody:
+    type: "object"
+    required:
+    - "appName"
+    - "appVersion"
+    - "deviceCode"
+    - "deviceId"
+    - "deviceName"
+    - "osName"
+    - "osVersion"
+    - "serviceCode"
+    - "token"
+    properties:
+      appName:
+        type: "string"
+      appVersion:
+        type: "string"
+      deviceCode:
+        type: "string"
+      deviceId:
+        type: "string"
+      deviceName:
+        type: "string"
+      osName:
+        type: "string"
+      osVersion:
+        type: "string"
+      serviceCode:
+        type: "string"
+      token:
+        type: "string"
+    description: "A TokenLoginRequestBody model\nthis is used for token login e.g.\
+      \ Google, Facebook etc."
+  AutodownloadRequestBody:
+    type: "object"
+    required:
+    - "pub"
+    - "topic"
+    properties:
+      date:
+        type: "string"
+      pub:
+        type: "string"
+      topic:
+        type: "string"
+    description: "Autodownload Model"
+  BlacklistTokenRequestParamsBody:
+    type: "object"
+    required:
+    - "serviceCode"
+    - "username"
+    properties:
+      deviceId:
+        type: "string"
+      serviceCode:
+        type: "string"
+      username:
+        type: "string"
+    description: "BlacklistTokenRequestParamsBody : it is the body of blacklist jwt\
+      \ request body"
+  PushUpdateSuccess:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int64"
+  JWTTokenTimeout:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int64"
+      message:
+        type: "string"
+  ClearUserSessionRequestBody:
+    type: "object"
+    required:
+    - "username"
+    properties:
+      username:
+        type: "string"
+    description: "A ClearUserSessionRequestBody model\nthis is used for clearing user\
+      \ session"
+  LogoutSuccess:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int64"
+      message:
+        type: "string"
+x-amazon-apigateway-gateway-responses:
+  EXPIRED_TOKEN:
+    statusCode: 403
+    responseTemplates:
+      application/json: "{\"code\": 403,\"message\": \"APIGW: Configuration - Expired\
+        \ Token\",\"data\": null}"
+  INVALID_API_KEY:
+    statusCode: 403
+    responseTemplates:
+      application/json: "{\"code\": 403,\"message\": \"APIGW: Invalid API Key\",\"\
+        data\": null}"
+  DEFAULT_4XX:
+    responseTemplates:
+      application/json: "{\"code\": 403,\"message\": \"APIGW: Request Not Allowed\"\
+        ,\"data\": null}"
+  INVALID_SIGNATURE:
+    statusCode: 403
+    responseTemplates:
+      application/json: "{\"code\": 403,\"message\": \"APIGW - Invalid Signature\"\
+        ,\"data\": null}"
+  ACCESS_DENIED:
+    statusCode: 403
+    responseTemplates:
+      application/json: "{\"code\": 403,\"message\": \"APIGW: Access Denied\",\"data\"\
+        : null}"
+  MISSING_AUTHENTICATION_TOKEN:
+    statusCode: 403
+    responseTemplates:
+      application/json: "{\"code\": 403,\"message\": \"APIGW: Unsupported API method\
+        \ or resource\",\"data\": null}"
+  WAF_FILTERED:
+    statusCode: 403
+    responseTemplates:
+      application/json: "{\"code\": 403,\"message\": \"APIGW: WAF Filtered\",\"data\"\
+        : null}"
