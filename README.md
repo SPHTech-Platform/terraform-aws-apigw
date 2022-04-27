@@ -55,5 +55,10 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+<<<<<<< HEAD
 | <a name="output_aws_api_gateway_rest_api_id"></a> [aws\_api\_gateway\_rest\_api\_id](#output\_aws\_api\_gateway\_rest\_api\_id) | REST API id of the creted api |
 <!-- END_TF_DOCS -->
+=======
+| <a name="output_aws_api_gateway_rest_api_id"></a> [aws\_api\_gateway\_rest\_api\_id](#output\_aws\_api\_gateway\_rest\_api\_id) | n/a |
+<!-- END_TF_DOCS -->
+>>>>>>> c0a3f6433ed66da766c454bb0be1ed5c108947d9
