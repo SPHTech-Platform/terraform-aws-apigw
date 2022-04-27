@@ -31,30 +31,15 @@ variable "types" {
   default     = ["REGIONAL"]
 }
 
-##Usage Plan Config##
-
-variable "limit" {
-  description = "The maximum number of requests that can be made in a given time period."
-  default     = 5000
-}
-
-variable "offset" {
-  description = "The number of requests subtracted from the given limit in the initial time period."
-  default     = 2
-}
-
-variable "period" {
-  description = "The time period in which the limit applies. Valid values are DAY, WEEK or MONTH."
-  default     = "MONTH"
-}
-
 variable "throttling_burst_limit" {
   description = "The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity."
+  type        = number
   default     = 1000
 }
 
 variable "throttling_rate_limit" {
   description = "The API request steady-state rate limit"
+  type        = number
   default     = 1000
 }
 
@@ -76,12 +61,6 @@ variable "data_trace_enabled" {
   default     = false
 }
 
-variable "xray_tracing_enabled" {
-  description = "Whether active tracing with X-ray is enabled."
-  type        = bool
-  default     = false
-}
-
 variable "cache_cluster_enabled" {
   description = "Specifies whether a cache cluster is enabled for the stage."
   type        = bool
@@ -91,13 +70,7 @@ variable "cache_cluster_enabled" {
 variable "cache_cluster_size" {
   description = "The size of the cache cluster for the stage, if enabled"
   type        = string
-  default     = ""
-}
-
-variable "enable_cloud_watch_log" {
-  description = "Specifies whether a cloud watch log enabled."
-  type        = bool
-  default     = false
+  default     = "0.5"
 }
 
 variable "log_group_name" {
