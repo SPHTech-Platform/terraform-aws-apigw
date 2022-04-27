@@ -41,6 +41,7 @@ No modules.
 | <a name="input_key_names"></a> [key\_names](#input\_key\_names) | Key names | `map(any)` | `{}` | no |
 | <a name="input_log_format"></a> [log\_format](#input\_log\_format) | Cloudwatch log format | `string` | `""` | no |
 | <a name="input_log_group_name"></a> [log\_group\_name](#input\_log\_group\_name) | Custom log group name. | `string` | `""` | no |
+| <a name="input_log_kms_key_id"></a> [log\_kms\_key\_id](#input\_log\_kms\_key\_id) | The ARN of the KMS Key to use when encrypting log data | `string` | n/a | yes |
 | <a name="input_log_retention_in_days"></a> [log\_retention\_in\_days](#input\_log\_retention\_in\_days) | Cloudwatch log retention in days | `number` | `7` | no |
 | <a name="input_logging_level"></a> [logging\_level](#input\_logging\_level) | Specifies the logging level for this method. | `string` | `"OFF"` | no |
 | <a name="input_metrics_enabled"></a> [metrics\_enabled](#input\_metrics\_enabled) | Specifies whether Amazon CloudWatch metrics are enabled for this method. | `bool` | `false` | no |
@@ -55,10 +56,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-<<<<<<< HEAD
 | <a name="output_aws_api_gateway_rest_api_id"></a> [aws\_api\_gateway\_rest\_api\_id](#output\_aws\_api\_gateway\_rest\_api\_id) | REST API id of the creted api |
 <!-- END_TF_DOCS -->
-=======
-| <a name="output_aws_api_gateway_rest_api_id"></a> [aws\_api\_gateway\_rest\_api\_id](#output\_aws\_api\_gateway\_rest\_api\_id) | n/a |
-<!-- END_TF_DOCS -->
->>>>>>> c0a3f6433ed66da766c454bb0be1ed5c108947d9
