@@ -52,7 +52,7 @@ variable "metrics_enabled" {
 variable "logging_level" {
   description = "Specifies the logging level for this method."
   type        = string
-  default     = "OFF"
+  default     = "ERROR"
 }
 
 variable "data_trace_enabled" {

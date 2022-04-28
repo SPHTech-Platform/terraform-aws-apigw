@@ -37,13 +37,14 @@ No modules.
 | <a name="input_body_template"></a> [body\_template](#input\_body\_template) | OpenAPI specification template | `string` | `""` | no |
 | <a name="input_cache_cluster_enabled"></a> [cache\_cluster\_enabled](#input\_cache\_cluster\_enabled) | Specifies whether a cache cluster is enabled for the stage. | `bool` | `false` | no |
 | <a name="input_cache_cluster_size"></a> [cache\_cluster\_size](#input\_cache\_cluster\_size) | The size of the cache cluster for the stage, if enabled | `string` | `"0.5"` | no |
+| <a name="input_caching_enabled"></a> [caching\_enabled](#input\_caching\_enabled) | Specifies whether caching is enabled for the API gateway method | `bool` | `false` | no |
 | <a name="input_data_trace_enabled"></a> [data\_trace\_enabled](#input\_data\_trace\_enabled) | Specifies the logging level for this method. | `bool` | `false` | no |
 | <a name="input_key_names"></a> [key\_names](#input\_key\_names) | Key names | `map(any)` | `{}` | no |
 | <a name="input_log_format"></a> [log\_format](#input\_log\_format) | Cloudwatch log format | `string` | `""` | no |
 | <a name="input_log_group_name"></a> [log\_group\_name](#input\_log\_group\_name) | Custom log group name. | `string` | `""` | no |
 | <a name="input_log_kms_key_id"></a> [log\_kms\_key\_id](#input\_log\_kms\_key\_id) | The ARN of the KMS Key to use when encrypting log data | `string` | n/a | yes |
 | <a name="input_log_retention_in_days"></a> [log\_retention\_in\_days](#input\_log\_retention\_in\_days) | Cloudwatch log retention in days | `number` | `7` | no |
-| <a name="input_logging_level"></a> [logging\_level](#input\_logging\_level) | Specifies the logging level for this method. | `string` | `"OFF"` | no |
+| <a name="input_logging_level"></a> [logging\_level](#input\_logging\_level) | Specifies the logging level for this method. | `string` | `"ERROR"` | no |
 | <a name="input_metrics_enabled"></a> [metrics\_enabled](#input\_metrics\_enabled) | Specifies whether Amazon CloudWatch metrics are enabled for this method. | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the API gateway | `string` | n/a | yes |
 | <a name="input_stage"></a> [stage](#input\_stage) | Name of the API gateway stage | `string` | n/a | yes |
