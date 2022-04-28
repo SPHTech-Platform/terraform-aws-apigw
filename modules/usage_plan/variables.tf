@@ -27,3 +27,10 @@ variable "period" {
   description = "The time period in which the limit applies. Valid values are DAY, WEEK or MONTH."
   default     = "MONTH"
 }
+
+variable "api_keys" {
+  description = "List of api keys created and assigned to the usage plan"
+  type        = list(any)
+  default     = []
+  # It is a list of objects with the keyname and enabled. ex: [ { "key_name" : "key1", "enabled" : true }]
+}

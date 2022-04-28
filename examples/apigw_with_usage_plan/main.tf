@@ -38,4 +38,10 @@ module "api_gateway_usage_plan" {
       "api_id" : module.api_gateway.aws_api_gateway_rest_api_id
     }
   ]
+  api_keys = [
+    { "key_name" : "key1", "enabled" : true },
+    { "key_name" : "key2", "enabled" : true },
+    { "key_name" : "key3", "enabled" : false },
+    { "key_name" : "key4", "enabled" : true },
+  ]
 }
