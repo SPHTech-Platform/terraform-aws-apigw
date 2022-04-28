@@ -26,8 +26,8 @@ resource "aws_api_gateway_deployment" "deployment" {
 }
 
 resource "aws_api_gateway_stage" "stage" {
-  #checkov:skip:CKV_AWS_120:Caching should be optional as caching is disabled for some applications
-  #checkov:skip:CKV2_AWS_29:Since apigw can be protected by Cloudfront
+  #checkov:skip=CKV_AWS_120:Caching should be optional as caching is disabled for some applications
+  #checkov:skip=CKV2_AWS_29:Since apigw can be protected by Cloudfront
   deployment_id = aws_api_gateway_deployment.deployment.id
   rest_api_id   = aws_api_gateway_rest_api.api.id
 
@@ -56,7 +56,7 @@ resource "aws_cloudwatch_log_group" "log_group" {
 
 
 resource "aws_api_gateway_method_settings" "method_settings" {
-  #checkov:skip:CKV_AWS_225:Caching should be optional as caching is disabled for some applications
+  #checkov:skip=CKV_AWS_225:Caching should be optional as caching is disabled for some applications
   rest_api_id = aws_api_gateway_rest_api.api.id
   stage_name  = aws_api_gateway_stage.stage.stage_name
   method_path = "*/*"
