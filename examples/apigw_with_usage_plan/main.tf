@@ -21,7 +21,8 @@ module "api_gateway" {
   cache_cluster_enabled = true
   cache_cluster_size    = "0.5"
 
-  key_names = { "key1" : "key1", "key2" : "key2" }
+  log_kms_key_id = "arn:aws:kms:ap-southeast-1:565040840361:key/1f44f216-af5d-4d82-bb53-6b772f882b66"
+
 }
 
 

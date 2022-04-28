@@ -7,6 +7,10 @@ resource "aws_api_gateway_rest_api" "api" {
   endpoint_configuration {
     types = var.types
   }
+  lifecycle {
+    create_before_destroy = true
+  }
+
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
@@ -22,7 +26,8 @@ resource "aws_api_gateway_deployment" "deployment" {
 }
 
 resource "aws_api_gateway_stage" "stage" {
-
+  #checkov:skip:CKV_AWS_120:Caching should be optional as caching is disabled for some applications
+  #checkov:skip:CKV2_AWS_29:Since apigw can be protected by Cloudfront
   deployment_id = aws_api_gateway_deployment.deployment.id
   rest_api_id   = aws_api_gateway_rest_api.api.id
 
@@ -51,6 +56,7 @@ resource "aws_cloudwatch_log_group" "log_group" {
 
 
 resource "aws_api_gateway_method_settings" "method_settings" {
+  #checkov:skip:CKV_AWS_225:Caching should be optional as caching is disabled for some applications
   rest_api_id = aws_api_gateway_rest_api.api.id
   stage_name  = aws_api_gateway_stage.stage.stage_name
   method_path = "*/*"
@@ -62,5 +68,6 @@ resource "aws_api_gateway_method_settings" "method_settings" {
     throttling_burst_limit = var.throttling_burst_limit
     throttling_rate_limit  = var.throttling_rate_limit
     cache_data_encrypted   = true
+    caching_enabled        = var.caching_enabled
   }
 }

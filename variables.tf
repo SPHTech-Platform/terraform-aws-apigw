@@ -97,6 +97,12 @@ variable "log_kms_key_id" {
 }
 
 
+variable "caching_enabled" {
+  description = "Specifies whether caching is enabled for the API gateway method"
+  type        = bool
+  default     = false
+}
+
 variable "key_names" {
   description = "Key names"
   type        = map(any)
