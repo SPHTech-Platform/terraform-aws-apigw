@@ -23,6 +23,8 @@ module "api_gateway" {
 
   log_kms_key_id = "arn:aws:kms:ap-southeast-1:565040840361:key/1f44f216-af5d-4d82-bb53-6b772f882b66"
 
+  log_format = "{ \"requestId\" : \"$context.requestId\" , \"ip\": \"$context.identity.sourceIp\", \"requestTime\":\"$context.requestTime\", \"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\", \"path\" : \"$context.path\" , \"status\":\"$context.status\", \"responseLength\":\"$context.responseLength\",\"error\":\"$context.error.message\" , \"userAgent\" : \"$context.identity.userAgent\" , \"wafResponse\" : \"$context.wafResponseCode\" }"
+
 }
 
 
