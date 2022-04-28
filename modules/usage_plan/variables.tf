@@ -7,16 +7,11 @@ variable "name" {
   type        = string
 }
 
-variable "api_id" {
-  description = "Id of the API gateway"
-  type        = string
+variable "stages" {
+  description = "List of stages the usage plan can be used "
+  type        = list(any)
 }
 
-
-variable "stage" {
-  description = "Name of the API gateway stage used for the usage plan"
-  type        = string
-}
 
 variable "limit" {
   description = "The maximum number of requests that can be made in a given time period."

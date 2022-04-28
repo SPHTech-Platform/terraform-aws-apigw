@@ -29,6 +29,11 @@ module "api_gateway" {
 module "api_gateway_usage_plan" {
   source = "../../../terraform-aws-apigw/modules/usage_plan"
   name   = "NewshubAPI"
-  stage  = "dev"
-  api_id = module.api_gateway.aws_api_gateway_rest_api_id
+
+  stages = [
+    {
+      "stage" : "dev",
+      "api_id" : module.api_gateway.aws_api_gateway_rest_api_id
+    }
+  ]
 }
