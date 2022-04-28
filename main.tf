@@ -28,6 +28,7 @@ resource "aws_api_gateway_deployment" "deployment" {
 resource "aws_api_gateway_stage" "stage" {
   #checkov:skip=CKV_AWS_120:Caching should be optional as caching is disabled for some applications
   #checkov:skip=CKV2_AWS_29:Since apigw can be protected by Cloudfront
+  #checkov:skip=CKV2_AWS_4:There is no loggging level defined for aws_api_gateway_stage. It is only available for aws_api_gateway_method_settings
   deployment_id = aws_api_gateway_deployment.deployment.id
   rest_api_id   = aws_api_gateway_rest_api.api.id
 
