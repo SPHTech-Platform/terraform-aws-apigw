@@ -45,16 +45,12 @@ resource "aws_api_gateway_stage" "stage" {
 
 }
 
-
 resource "aws_cloudwatch_log_group" "log_group" {
   #Custom name if it is imported
   name              = var.log_group_name != "" ? var.log_group_name : "${var.name}-access-logs"
   retention_in_days = var.log_retention_in_days
   kms_key_id        = var.log_kms_key_id
 }
-
-
-
 
 resource "aws_api_gateway_method_settings" "method_settings" {
   #checkov:skip=CKV_AWS_225:Caching should be optional as caching is disabled for some applications

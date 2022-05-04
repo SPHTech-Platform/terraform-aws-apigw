@@ -5,6 +5,7 @@ provider "aws" {
 
 module "api_gateway" {
   source = "../../../terraform-aws-apigw/"
+
   name   = "NewshubAPIV2"
   stage  = "dev"
 
@@ -27,9 +28,9 @@ module "api_gateway" {
 
 }
 
-
 module "api_gateway_usage_plan" {
   source = "../../../terraform-aws-apigw/modules/usage_plan"
+  
   name   = "NewshubAPI"
 
   stages = [
