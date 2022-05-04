@@ -23,8 +23,8 @@ resource "aws_api_gateway_usage_plan" "usage_plan" {
 }
 
 resource "aws_api_gateway_api_key" "key" {
-  for_each    = { for api_key in var.api_keys : api_key.key_name => api_key }
-  
+  for_each = { for api_key in var.api_keys : api_key.key_name => api_key }
+
   name        = each.key
   description = "API Key for ${each.key}"
   enabled     = each.value.enabled
@@ -32,7 +32,7 @@ resource "aws_api_gateway_api_key" "key" {
 }
 
 resource "aws_api_gateway_usage_plan_key" "main" {
-  for_each      = { for api_key in var.api_keys : api_key.key_name => api_key }
+  for_each = { for api_key in var.api_keys : api_key.key_name => api_key }
 
   key_id        = aws_api_gateway_api_key.key[each.key].id
   key_type      = "API_KEY"

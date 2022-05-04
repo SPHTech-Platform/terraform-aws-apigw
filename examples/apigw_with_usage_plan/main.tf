@@ -6,8 +6,8 @@ provider "aws" {
 module "api_gateway" {
   source = "../../../terraform-aws-apigw/"
 
-  name   = "NewshubAPIV2"
-  stage  = "dev"
+  name  = "NewshubAPIV2"
+  stage = "dev"
 
   body_template = file("templates/spec.yml")
 
@@ -30,8 +30,8 @@ module "api_gateway" {
 
 module "api_gateway_usage_plan" {
   source = "../../../terraform-aws-apigw/modules/usage_plan"
-  
-  name   = "NewshubAPI"
+
+  name = "NewshubAPI"
 
   stages = [
     {
