@@ -1,8 +1,8 @@
+openapi: 3.0.1
 #checkov:skip=CKV_OPENAPI_1:Skiping security definitions for example template
 #checkov:skip=CKV_OPENAPI_4:Skiping security definitions for example template
 #checkov:skip=CKV_OPENAPI_5:Skiping security definitions for example template
 #checkov:skip=CKV_OPENAPI_6:Skiping security definitions for example template
-openapi: 3.0.1
 info:
   title: Example Pet Store
   description: A Pet Store API.
