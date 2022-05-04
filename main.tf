@@ -1,4 +1,3 @@
-
 resource "aws_api_gateway_rest_api" "api" {
   body = var.body_template
 
@@ -40,7 +39,7 @@ resource "aws_api_gateway_stage" "stage" {
 
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.log_group.arn
-    format          = var.log_format
+    format          = jsonencode(var.log_format)
   }
 
 }
@@ -49,7 +48,15 @@ resource "aws_cloudwatch_log_group" "log_group" {
   #Custom name if it is imported
   name              = var.log_group_name != "" ? var.log_group_name : "${var.name}-access-logs"
   retention_in_days = var.log_retention_in_days
-  kms_key_id        = var.log_kms_key_id
+  kms_key_id        = var.log_kms_key_id != "" ? var.log_kms_key_id : aws_kms_key.cloudwatch[0].arn
+}
+
+resource "aws_kms_key" "cloudwatch" {
+  count = var.log_kms_key_id != "" ? 0 : 1
+
+  description         = "Key for api gateway Cloudwatch log encryption"
+  enable_key_rotation = true
+  policy              = data.aws_iam_policy_document.cloudwatch_logs_allow_apigw.json
 }
 
 resource "aws_api_gateway_method_settings" "method_settings" {

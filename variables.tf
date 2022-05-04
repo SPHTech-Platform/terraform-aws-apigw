@@ -81,8 +81,20 @@ variable "log_group_name" {
 
 variable "log_format" {
   description = "Cloudwatch log format"
-  type        = string
-  default     = ""
+  type        = map(any)
+  default = {
+    "requestId" : "$context.requestId",
+    "extendedRequestId" : "$context.extendedRequestId",
+    "ip" : "$context.identity.sourceIp",
+    "caller" : "$context.identity.caller",
+    "user" : "$context.identity.user",
+    "requestTime" : "$context.requestTime",
+    "httpMethod" : "$context.httpMethod",
+    "resourcePath" : "$context.resourcePath",
+    "status" : "$context.status",
+    "protocol" : "$context.protocol",
+    "responseLength" : "$context.responseLength"
+  }
 }
 
 variable "log_retention_in_days" {
@@ -94,6 +106,7 @@ variable "log_retention_in_days" {
 variable "log_kms_key_id" {
   description = "The ARN of the KMS Key to use when encrypting log data"
   type        = string
+  default     = ""
 }
 
 
@@ -101,10 +114,4 @@ variable "caching_enabled" {
   description = "Specifies whether caching is enabled for the API gateway method"
   type        = bool
   default     = false
-}
-
-variable "key_names" {
-  description = "Key names"
-  type        = map(any)
-  default     = {}
 }

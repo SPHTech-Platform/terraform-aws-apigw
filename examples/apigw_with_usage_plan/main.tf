@@ -6,14 +6,14 @@ provider "aws" {
 module "api_gateway" {
   source = "../../../terraform-aws-apigw/"
 
-  name  = "NewshubAPIV2"
+  name  = "PetStoreSandbox"
   stage = "dev"
 
   body_template = file("templates/spec.yml")
 
   stage_variables = {
-    "auth_lambda" : "newshub-auth-dev",
-    "auth_url" : "xx.elb.ap-southeast-1.amazonaws.com"
+    "var1" : "variable 1",
+    "var2" : "variable 2"
   }
   data_trace_enabled = true
   metrics_enabled    = true
@@ -22,16 +22,26 @@ module "api_gateway" {
   cache_cluster_enabled = true
   cache_cluster_size    = "0.5"
 
-  log_kms_key_id = "arn:aws:kms:ap-southeast-1:565040840361:key/1f44f216-af5d-4d82-bb53-6b772f882b66"
-
-  log_format = "{ \"requestId\" : \"$context.requestId\" , \"ip\": \"$context.identity.sourceIp\", \"requestTime\":\"$context.requestTime\", \"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\", \"path\" : \"$context.path\" , \"status\":\"$context.status\", \"responseLength\":\"$context.responseLength\",\"error\":\"$context.error.message\" , \"userAgent\" : \"$context.identity.userAgent\" , \"wafResponse\" : \"$context.wafResponseCode\" }"
+  log_format = {
+    "requestId" : "$context.requestId",
+    "ip" : "$context.identity.sourceIp",
+    "requestTime" : "$context.requestTime",
+    "httpMethod" : "$context.httpMethod",
+    "resourcePath" : "$context.resourcePath",
+    "path" : "$context.path",
+    "status" : "$context.status",
+    "responseLength" : "$context.responseLength",
+    "error" : "$context.error.message",
+    "userAgent" : "$context.identity.userAgent",
+    "wafResponse" : "$context.wafResponseCode"
+  }
 
 }
 
 module "api_gateway_usage_plan" {
   source = "../../../terraform-aws-apigw/modules/usage_plan"
 
-  name = "NewshubAPI"
+  name = "PetStoreSandbox-usage-plan"
 
   stages = [
     {
