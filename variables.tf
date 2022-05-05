@@ -7,7 +7,6 @@ variable "name" {
   type        = string
 }
 
-
 variable "stage" {
   description = "Name of the API gateway stage"
   type        = string

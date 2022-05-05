@@ -7,6 +7,13 @@ variable "name" {
   type        = string
 }
 
+variable "default_tags" {
+  default = {
+  }
+  description = "Default Tags for Auto Scaling Group"
+  type        = map(string)
+}
+
 variable "stages" {
   description = "List of stages the usage plan can be used "
   type        = list(any)

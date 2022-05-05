@@ -10,6 +10,9 @@ resource "aws_api_gateway_rest_api" "api" {
     create_before_destroy = true
   }
 
+  tags = {
+    Name = var.name
+  }
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
@@ -49,6 +52,11 @@ resource "aws_cloudwatch_log_group" "log_group" {
   name              = var.log_group_name != "" ? var.log_group_name : "${var.name}-access-logs"
   retention_in_days = var.log_retention_in_days
   kms_key_id        = var.log_kms_key_id != "" ? var.log_kms_key_id : aws_kms_key.cloudwatch[0].arn
+
+  tags = {
+    Name = var.log_group_name != "" ? var.log_group_name : "${var.name}-access-logs"
+  }
+
 }
 
 resource "aws_kms_key" "cloudwatch" {

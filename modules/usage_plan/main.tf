@@ -20,6 +20,10 @@ resource "aws_api_gateway_usage_plan" "usage_plan" {
     offset = var.offset
     period = var.period
   }
+
+  tags = {
+    Name = var.name
+  }
 }
 
 resource "aws_api_gateway_api_key" "key" {
@@ -28,6 +32,10 @@ resource "aws_api_gateway_api_key" "key" {
   name        = each.key
   description = "API Key for ${each.key}"
   enabled     = each.value.enabled
+
+  tags = {
+    Name = each.key
+  }
 
 }
 

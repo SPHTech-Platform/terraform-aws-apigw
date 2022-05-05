@@ -1,7 +1,33 @@
+locals {
+  common_tags = {
+    "sph:env"          = "dev"
+    "sph:app-tier"     = "1"
+    "sph:appIC"        = "Prem Kumar Kailasu"
+    "sph:appteam"      = "dstf"
+    "sph:managed-by"   = "dstf"
+    "sph:cost-centre"  = "1691"
+    "sph:product"      = "hcp"
+    "sph:biz-dept"     = "DPE"
+    "sph:biz-owner"    = "Jensen"
+    "sph:biz-email"    = "jenboey@sph.com.sg"
+    "sph:creator-name" = "dstf"
+    "sph:creator-email" = join(":", [
+      "sphtech-dstf-usrgrp@sph.com.sg"
+    ])
+
+    "sph:provisioned-via" = "terraform"
+  }
+}
 provider "aws" {
   region  = "ap-southeast-1"
   profile = "sandbox"
+
+  default_tags {
+    tags = local.common_tags
+  }
 }
+
+
 
 module "api_gateway" {
   source = "../../../terraform-aws-apigw/"

@@ -60,5 +60,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_aws_api_gateway_rest_api_id"></a> [aws\_api\_gateway\_rest\_api\_id](#output\_aws\_api\_gateway\_rest\_api\_id) | REST API id of the creted api |
+| <a name="output_aws_api_gateway_rest_api_id"></a> [aws\_api\_gateway\_rest\_api\_id](#output\_aws\_api\_gateway\_rest\_api\_id) | REST API id of the created api |
+| <a name="output_aws_api_gateway_stage_execution_arn"></a> [aws\_api\_gateway\_stage\_execution\_arn](#output\_aws\_api\_gateway\_stage\_execution\_arn) | The execution ARN part to be used in lambda\_permission source\_arn when allowing API Gateway to invoke a Lambda function |
+| <a name="output_aws_api_gateway_stage_invoke_url"></a> [aws\_api\_gateway\_stage\_invoke\_url](#output\_aws\_api\_gateway\_stage\_invoke\_url) | The URL to invoke the API pointing to the stage |
 <!-- END_TF_DOCS -->
