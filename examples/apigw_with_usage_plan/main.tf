@@ -48,17 +48,17 @@ module "api_gateway" {
   cache_cluster_size    = "0.5"
 
   log_format = {
-    "requestId" : "$context.requestId",
-    "ip" : "$context.identity.sourceIp",
-    "requestTime" : "$context.requestTime",
-    "httpMethod" : "$context.httpMethod",
-    "resourcePath" : "$context.resourcePath",
-    "path" : "$context.path",
-    "status" : "$context.status",
-    "responseLength" : "$context.responseLength",
-    "error" : "$context.error.message",
-    "userAgent" : "$context.identity.userAgent",
-    "wafResponse" : "$context.wafResponseCode"
+    requestId      = "$context.requestId"
+    ip             = "$context.identity.sourceIp"
+    requestTime    = "$context.requestTime"
+    httpMethod     = "$context.httpMethod"
+    resourcePath   = "$context.resourcePath"
+    path           = "$context.path"
+    status         = "$context.status"
+    responseLength = "$context.responseLength"
+    error          = "$context.error.message"
+    userAgent      = "$context.identity.userAgent"
+    wafResponse    = "$context.wafResponseCode"
   }
 
 }
@@ -70,7 +70,7 @@ module "api_gateway_usage_plan" {
 
   stages = [
     {
-      "stage" : "dev",
+      "stage" : module.api_gateway.aws_api_gateway_stage_name,
       "api_id" : module.api_gateway.aws_api_gateway_rest_api_id
     }
   ]

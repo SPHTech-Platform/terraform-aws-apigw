@@ -80,19 +80,19 @@ variable "log_group_name" {
 
 variable "log_format" {
   description = "Cloudwatch log format"
-  type        = map(any)
+  type        = map(string)
   default = {
-    "requestId" : "$context.requestId",
-    "extendedRequestId" : "$context.extendedRequestId",
-    "ip" : "$context.identity.sourceIp",
-    "caller" : "$context.identity.caller",
-    "user" : "$context.identity.user",
-    "requestTime" : "$context.requestTime",
-    "httpMethod" : "$context.httpMethod",
-    "resourcePath" : "$context.resourcePath",
-    "status" : "$context.status",
-    "protocol" : "$context.protocol",
-    "responseLength" : "$context.responseLength"
+    requestId         = "$context.requestId"
+    extendedRequestId = "$context.extendedRequestId"
+    ip                = "$context.identity.sourceIp"
+    caller            = "$context.identity.caller"
+    user              = "$context.identity.user"
+    requestTime       = "$context.requestTime"
+    httpMethod        = "$context.httpMethod"
+    resourcePath      = "$context.resourcePath"
+    status            = "$context.status"
+    protocol          = "$context.protocol"
+    responseLength    = "$context.responseLength"
   }
 }
 
