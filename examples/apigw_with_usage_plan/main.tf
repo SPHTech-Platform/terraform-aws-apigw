@@ -20,7 +20,6 @@ locals {
 }
 provider "aws" {
   region  = "ap-southeast-1"
-  profile = "sandbox"
 
   default_tags {
     tags = local.common_tags
