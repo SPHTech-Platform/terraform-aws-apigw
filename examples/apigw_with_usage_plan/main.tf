@@ -68,16 +68,28 @@ module "api_gateway_usage_plan" {
 
   name = "PetStoreSandbox-usage-plan"
 
-  stages = [
-    {
-      "stage" : module.api_gateway.aws_api_gateway_stage_name,
-      "api_id" : module.api_gateway.aws_api_gateway_rest_api_id
+  stages = {
+    stage1 = {
+      stage  = module.api_gateway.aws_api_gateway_stage_name
+      api_id = module.api_gateway.aws_api_gateway_rest_api_id
     }
-  ]
-  api_keys = [
-    { "key_name" : "key1", "enabled" : true },
-    { "key_name" : "key2", "enabled" : true },
-    { "key_name" : "key3", "enabled" : false },
-    { "key_name" : "key4", "enabled" : true },
-  ]
+  }
+  api_keys = {
+    key1 = {
+      key_name : "key1"
+      enabled : true
+    }
+    key2 = {
+      key_name : "key2"
+      enabled : true
+    }
+    key3 = {
+      key_name : "key3",
+      enabled : false
+    }
+    key4 = {
+      key_name : "key4",
+      enabled : true
+    }
+  }
 }
