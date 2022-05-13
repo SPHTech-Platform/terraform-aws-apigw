@@ -79,7 +79,7 @@ resource "aws_api_gateway_method_settings" "method_settings" {
     data_trace_enabled     = var.data_trace_enabled
     throttling_burst_limit = var.throttling_burst_limit
     throttling_rate_limit  = var.throttling_rate_limit
-    cache_data_encrypted   = true
+    cache_data_encrypted   = var.cache_data_encrypted
     caching_enabled        = var.caching_enabled
   }
 }
