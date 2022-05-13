@@ -56,13 +56,13 @@ variable "period" {
 }
 
 # api_keys = {
-#   key1 = { 
+#   key1 = {
 #     key_name : "key1"
-#     enabled: true 
+#     enabled: true
 #   }
-#   key2 = { 
+#   key2 = {
 #     key_name : "key2"
-#     enabled: true 
+#     enabled: true
 #   }
 #   ...
 # }
