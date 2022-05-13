@@ -66,6 +66,12 @@ variable "cache_cluster_enabled" {
   default     = false
 }
 
+variable "cache_data_encrypted" {
+  description = "Specifies whether a cache data needs to be encrypted."
+  type        = bool
+  default     = true
+}
+
 variable "cache_cluster_size" {
   description = "The size of the cache cluster for the stage, if enabled"
   type        = string
