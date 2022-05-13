@@ -2,7 +2,7 @@
 resource "aws_api_gateway_domain_name" "domain" {
   domain_name              = var.domain_name
   regional_certificate_arn = var.cert_arn
-  security_policy           = "TLS_1_2"
+  security_policy          = "TLS_1_2"
 
   endpoint_configuration {
     types = ["REGIONAL"]
