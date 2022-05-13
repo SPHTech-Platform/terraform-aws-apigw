@@ -29,7 +29,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cert_arn"></a> [cert\_arn](#input\_cert\_arn) | Cert ARN | `string` | n/a | yes |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Custom domain name | `string` | n/a | yes |
-| <a name="input_path_mapptings"></a> [path\_mapptings](#input\_path\_mapptings) | List of stages the usage plan can be used | <pre>map(<br>    object({<br>      api_id     = string<br>      stage_name = string<br>      base_path  = string<br>    })<br>  )</pre> | n/a | yes |
+| <a name="input_path_mappings"></a> [path\_mappings](#input\_path\_mappings) | List of stages the usage plan can be used | <pre>map(<br>    object({<br>      api_id     = string<br>      stage_name = string<br>      base_path  = string<br>    })<br>  )</pre> | n/a | yes |
 
 ## Outputs
 

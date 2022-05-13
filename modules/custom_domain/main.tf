@@ -12,7 +12,7 @@ resource "aws_api_gateway_domain_name" "domain" {
 
 resource "aws_api_gateway_base_path_mapping" "mapping" {
 
-  for_each = var.path_mapptings
+  for_each = var.path_mappings
 
   api_id      = each.value.api_id
   stage_name  = each.value.stage_name

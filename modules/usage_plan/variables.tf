@@ -14,13 +14,6 @@ variable "default_tags" {
   type        = map(string)
 }
 
-# stages = {
-#   stage1 = {
-#     stage  = "stage_name"
-#     api_id = "rest_api_id"
-#   }
-#   ...
-# }
 variable "stages" {
   description = "List of stages the usage plan can be used "
   type = map(
@@ -55,17 +48,6 @@ variable "period" {
   default     = "MONTH"
 }
 
-# api_keys = {
-#   key1 = {
-#     key_name : "key1"
-#     enabled: true
-#   }
-#   key2 = {
-#     key_name : "key2"
-#     enabled: true
-#   }
-#   ...
-# }
 variable "api_keys" {
   description = "List of api keys created and assigned to the usage plan"
   type = map(
