@@ -12,6 +12,14 @@ variable "cert_arn" {
   type        = string
 }
 
+# path_mapptings = {
+#   dev = {
+#     stage  = "dev"
+#     api_id = "rest_api_id"
+#     base_path = "v1"
+#   }
+#   ...
+# }
 variable "path_mapptings" {
   description = "List of stages the usage plan can be used "
   type = map(
