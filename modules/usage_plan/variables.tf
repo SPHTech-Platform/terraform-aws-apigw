@@ -16,9 +16,19 @@ variable "default_tags" {
 
 variable "stages" {
   description = "List of stages the usage plan can be used "
-  type        = list(any)
+  type = map(
+    object({
+      api_id = string
+      stage  = string
+    })
+  )
 }
 
+variable "quota_settings_unlimited" {
+  description = "Specifies whether there is a unlimited quota limit ."
+  type        = bool
+  default     = false
+}
 
 variable "limit" {
   description = "The maximum number of requests that can be made in a given time period."
@@ -40,7 +50,11 @@ variable "period" {
 
 variable "api_keys" {
   description = "List of api keys created and assigned to the usage plan"
-  type        = list(any)
-  default     = []
-  # It is a list of objects with the keyname and enabled flag. ex: [ { "key_name" : "key1", "enabled" : true }]
+  type = map(
+    object({
+      key_name = string
+      enabled  = bool
+    })
+  )
+  default = {}
 }

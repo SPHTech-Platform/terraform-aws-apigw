@@ -3,10 +3,7 @@ resource "aws_api_gateway_usage_plan" "usage_plan" {
   description = "Usage plan created for ${var.name}"
 
   dynamic "api_stages" {
-    for_each = [for s in var.stages : {
-      api_id = s.api_id
-      stage  = s.stage
-    }]
+    for_each = var.stages
 
     content {
       api_id = api_stages.value.api_id
@@ -15,10 +12,13 @@ resource "aws_api_gateway_usage_plan" "usage_plan" {
 
   }
 
-  quota_settings {
-    limit  = var.limit
-    offset = var.offset
-    period = var.period
+  dynamic "quota_settings" {
+    for_each = var.quota_settings_unlimited == true ? [1] : []
+    content {
+      limit  = var.limit
+      offset = var.offset
+      period = var.period
+    }
   }
 
   tags = {
@@ -27,22 +27,22 @@ resource "aws_api_gateway_usage_plan" "usage_plan" {
 }
 
 resource "aws_api_gateway_api_key" "key" {
-  for_each = { for api_key in var.api_keys : api_key.key_name => api_key }
+  for_each = var.api_keys
 
-  name        = each.key
-  description = "API Key for ${each.key}"
+  name        = each.value.key_name
+  description = "API Key for ${each.value.key_name}"
   enabled     = each.value.enabled
 
   tags = {
-    Name = each.key
+    Name = each.value.key_name
   }
 
 }
 
 resource "aws_api_gateway_usage_plan_key" "main" {
-  for_each = { for api_key in var.api_keys : api_key.key_name => api_key }
+  for_each = var.api_keys
 
-  key_id        = aws_api_gateway_api_key.key[each.key].id
+  key_id        = aws_api_gateway_api_key.key[each.value.key_name].id
   key_type      = "API_KEY"
   usage_plan_id = aws_api_gateway_usage_plan.usage_plan.id
 }
