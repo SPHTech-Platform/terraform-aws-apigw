@@ -93,3 +93,19 @@ module "api_gateway_usage_plan" {
     }
   }
 }
+
+module "api_gateway_custom_domain" {
+
+  source = "../../../terraform-aws-apigw/modules/custom_domain"
+
+  domain_name = "petstore-apitest.sphdigital.com"
+  cert_arn    = "arn:aws:acm:ap-southeast-1:028789939037:certificate/eb3e4d1c-7fe4-4970-b258-90b5b58b3ca5"
+
+  path_mapptings = {
+    v1 = {
+      stage_name = module.api_gateway.aws_api_gateway_stage_name
+      api_id     = module.api_gateway.aws_api_gateway_rest_api_id
+      base_path  = "v1"
+    }
+  }
+}
