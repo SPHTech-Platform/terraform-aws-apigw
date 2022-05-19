@@ -120,3 +120,15 @@ variable "caching_enabled" {
   type        = bool
   default     = false
 }
+
+
+variable "vpc_links" {
+  description = "List of VPC links for REST APIs"
+  type = map(
+    object({
+      description = string
+      target_arns = list(string)
+    })
+  )
+  default = {}
+}
