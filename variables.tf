@@ -121,9 +121,8 @@ variable "caching_enabled" {
   default     = false
 }
 
-
 variable "vpc_links" {
-  description = "List of VPC links for REST APIs"
+  description = "List of VPC links for REST APIs. key in the map denotes the vpc link name"
   type = map(
     object({
       description = string

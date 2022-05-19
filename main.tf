@@ -84,7 +84,6 @@ resource "aws_api_gateway_method_settings" "method_settings" {
   }
 }
 
-
 resource "aws_api_gateway_vpc_link" "vpc_link" {
   for_each = var.vpc_links
 
