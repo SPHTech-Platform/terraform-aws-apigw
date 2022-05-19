@@ -47,6 +47,13 @@ module "api_gateway" {
   cache_cluster_enabled = true
   cache_cluster_size    = "0.5"
 
+  vpc_links = {
+    test-vpc-link1 = {
+      description = "VPC Link for test-vpc-link1"
+      target_arns = ["arn:aws:elasticloadbalancing:us-east-2:123456789012:loadbalancer/net/my-load-balancer/1234567890123456"]
+    }
+  }
+
   log_format = {
     requestId      = "$context.requestId"
     ip             = "$context.identity.sourceIp"

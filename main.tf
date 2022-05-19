@@ -83,3 +83,11 @@ resource "aws_api_gateway_method_settings" "method_settings" {
     caching_enabled        = var.caching_enabled
   }
 }
+
+resource "aws_api_gateway_vpc_link" "vpc_link" {
+  for_each = var.vpc_links
+
+  name        = each.key
+  description = each.value.description
+  target_arns = each.value.target_arns
+}
