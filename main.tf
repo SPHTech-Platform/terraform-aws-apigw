@@ -28,6 +28,8 @@ resource "aws_api_gateway_deployment" "deployment" {
 }
 
 resource "aws_api_gateway_stage" "stage" {
+  #checkov:skip=CKV_AWS_158: Using default key in KMS instead of CMK
+  #checkov:skip=CKV2_AWS_51: Since its a community module, its up to the application's discretion.
   #checkov:skip=CKV_AWS_120:Caching should be optional as caching is disabled for some applications
   #checkov:skip=CKV2_AWS_29:Since apigw can be protected by Cloudfront
   #checkov:skip=CKV2_AWS_4:There is no loggging level defined for aws_api_gateway_stage. It is only available for aws_api_gateway_method_settings
