@@ -131,3 +131,9 @@ variable "vpc_links" {
   )
   default = {}
 }
+
+variable "enable_global_apigw_logging" {
+  description = "Enable global apigw logging"
+  type        = bool
+  default     = false
+}

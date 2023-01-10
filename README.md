@@ -14,16 +14,19 @@ API gateway module for REST API. There is no community module available for REST
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.9.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.0 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_apigw_cwl_role"></a> [apigw\_cwl\_role](#module\_apigw\_cwl\_role) | terraform-aws-modules/iam/aws//modules/iam-assumable-role | ~> 5.9.2 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
+| [aws_api_gateway_account.api_gateway_account](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_account) | resource |
 | [aws_api_gateway_deployment.deployment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment) | resource |
 | [aws_api_gateway_method_settings.method_settings](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_method_settings) | resource |
 | [aws_api_gateway_rest_api.api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api) | resource |
@@ -45,6 +48,7 @@ No modules.
 | <a name="input_cache_data_encrypted"></a> [cache\_data\_encrypted](#input\_cache\_data\_encrypted) | Specifies whether a cache data needs to be encrypted. | `bool` | `true` | no |
 | <a name="input_caching_enabled"></a> [caching\_enabled](#input\_caching\_enabled) | Specifies whether caching is enabled for the API gateway method | `bool` | `false` | no |
 | <a name="input_data_trace_enabled"></a> [data\_trace\_enabled](#input\_data\_trace\_enabled) | Specifies the logging level for this method. | `bool` | `false` | no |
+| <a name="input_enable_global_apigw_logging"></a> [enable\_global\_apigw\_logging](#input\_enable\_global\_apigw\_logging) | Enable global apigw logging | `bool` | `false` | no |
 | <a name="input_log_format"></a> [log\_format](#input\_log\_format) | Cloudwatch log format | `map(string)` | <pre>{<br>  "caller": "$context.identity.caller",<br>  "extendedRequestId": "$context.extendedRequestId",<br>  "httpMethod": "$context.httpMethod",<br>  "ip": "$context.identity.sourceIp",<br>  "protocol": "$context.protocol",<br>  "requestId": "$context.requestId",<br>  "requestTime": "$context.requestTime",<br>  "resourcePath": "$context.resourcePath",<br>  "responseLength": "$context.responseLength",<br>  "status": "$context.status",<br>  "user": "$context.identity.user"<br>}</pre> | no |
 | <a name="input_log_group_name"></a> [log\_group\_name](#input\_log\_group\_name) | Custom log group name. | `string` | `""` | no |
 | <a name="input_log_kms_key_id"></a> [log\_kms\_key\_id](#input\_log\_kms\_key\_id) | The ARN of the KMS Key to use when encrypting log data | `string` | `""` | no |
@@ -57,7 +61,7 @@ No modules.
 | <a name="input_throttling_burst_limit"></a> [throttling\_burst\_limit](#input\_throttling\_burst\_limit) | The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity. | `number` | `1000` | no |
 | <a name="input_throttling_rate_limit"></a> [throttling\_rate\_limit](#input\_throttling\_rate\_limit) | The API request steady-state rate limit | `number` | `1000` | no |
 | <a name="input_types"></a> [types](#input\_types) | Name of the API gateway stage | `list(string)` | <pre>[<br>  "REGIONAL"<br>]</pre> | no |
-| <a name="input_vpc_links"></a> [vpc\_links](#input\_vpc\_links) | List of VPC links for REST APIs | <pre>map(<br>    object({<br>      description = string<br>      target_arns = list(string)<br>    })<br>  )</pre> | `{}` | no |
+| <a name="input_vpc_links"></a> [vpc\_links](#input\_vpc\_links) | List of VPC links for REST APIs. key in the map denotes the vpc link name | <pre>map(<br>    object({<br>      description = string<br>      target_arns = list(string)<br>    })<br>  )</pre> | `{}` | no |
 
 ## Outputs
 
