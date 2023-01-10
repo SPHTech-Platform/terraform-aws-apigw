@@ -46,9 +46,7 @@ resource "aws_api_gateway_stage" "stage" {
     format          = jsonencode(var.log_format)
   }
 
-  tags = {
-    global_cwl_log_arn = var.enable_global_apigw_logging ? aws_api_gateway_account.api_gateway_account[0].cloudwatch_role_arn : ""
-  }
+ depends_on = [aws_api_gateway_account.api_gateway_account]
 
 }
 
