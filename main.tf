@@ -46,7 +46,7 @@ resource "aws_api_gateway_stage" "stage" {
     format          = jsonencode(var.log_format)
   }
 
- depends_on = [aws_api_gateway_account.api_gateway_account]
+  depends_on = [aws_api_gateway_account.api_gateway_account]
 
 }
 
