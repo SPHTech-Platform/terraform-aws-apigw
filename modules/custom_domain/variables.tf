@@ -37,7 +37,7 @@ variable "path_mappings" {
 }
 
 variable "endpoint_type" {
-  description = "List of endpoint types."
-  type        = list(string)
-  default     = ["REGIONAL"]
+  description = "Endpoint type."
+  type        = string
+  default     = "REGIONAL"
 }
