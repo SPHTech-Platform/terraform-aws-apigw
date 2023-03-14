@@ -1,6 +1,6 @@
 # Provisioned only for regional types. @todo: Enhance for other types as well
 resource "aws_api_gateway_domain_name" "domain_regional" {
-  count = endpoint_type == "REGIONAL" ? 1 : 0
+  count = var.endpoint_type == "REGIONAL" ? 1 : 0
 
   domain_name              = var.domain_name
   regional_certificate_arn = var.cert_arn == "" ? aws_acm_certificate.cert[0].arn : var.cert_arn
@@ -13,7 +13,7 @@ resource "aws_api_gateway_domain_name" "domain_regional" {
 }
 
 resource "aws_api_gateway_domain_name" "domain_edge" {
-  count = endpoint_type == "EDGE" ? 1 : 0
+  count = var.endpoint_type == "EDGE" ? 1 : 0
 
   domain_name     = var.domain_name
   certificate_arn = var.cert_arn == "" ? aws_acm_certificate.cert[0].arn : var.cert_arn
@@ -32,7 +32,7 @@ resource "aws_api_gateway_base_path_mapping" "mapping" {
   stage_name = each.value.stage_name
   base_path  = each.value.base_path
 
-  domain_name = endpoint_type == "EDGE" ? aws_api_gateway_domain_name.domain_edge[0].domain_name : aws_api_gateway_domain_name.domain_regional[0].domain_name
+  domain_name = var.endpoint_type == "EDGE" ? aws_api_gateway_domain_name.domain_edge[0].domain_name : aws_api_gateway_domain_name.domain_regional[0].domain_name
 }
 
 resource "aws_acm_certificate" "cert" {
