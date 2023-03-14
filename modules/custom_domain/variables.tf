@@ -40,4 +40,9 @@ variable "endpoint_type" {
   description = "Endpoint type."
   type        = string
   default     = "REGIONAL"
+
+  validation {
+    condition     = var.endpoint_type == "EDGE" || var.endpoint_type == "REGIONAL"
+    error_message = "endpoint_type must be 'EDGE' or 'REGIONAL'."
+  }
 }
