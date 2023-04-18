@@ -13,6 +13,8 @@ resource "aws_api_gateway_rest_api" "api" {
   tags = {
     Name = var.name
   }
+
+  disable_execute_api_endpoint = var.disable_execute_api_endpoint
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
