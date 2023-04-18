@@ -87,7 +87,7 @@ variable "log_group_name" {
 variable "log_format" {
   description = "Cloudwatch log format"
   type        = map(string)
-  default     = {
+  default = {
     requestId         = "$context.requestId"
     extendedRequestId = "$context.extendedRequestId"
     ip                = "$context.identity.sourceIp"
@@ -123,7 +123,7 @@ variable "caching_enabled" {
 
 variable "vpc_links" {
   description = "List of VPC links for REST APIs. key in the map denotes the vpc link name"
-  type        = map(
+  type = map(
     object({
       description = string
       target_arns = list(string)
