@@ -137,3 +137,15 @@ variable "enable_global_apigw_logging" {
   type        = bool
   default     = false
 }
+
+variable "enable_resource_policy" {
+  description = "Enable resource policy to allow other resources to Invoke this API"
+  type        = bool
+  default     = false
+}
+
+variable "resource_policy_identifier" {
+  description = "List of principals to allow to invoke this api"
+  type        = list(string)
+  default     = []
+}
