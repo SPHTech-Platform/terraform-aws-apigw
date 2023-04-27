@@ -144,8 +144,8 @@ variable "enable_resource_policy" {
   default     = false
 }
 
-variable "resource_policy_identifier" {
-  description = "List of principals to allow to invoke this api"
-  type        = list(string)
-  default     = []
+variable "resource_policy_json" {
+  description = "Resource policy as JSON to attach"
+  type        = string
+  default     = null
 }
