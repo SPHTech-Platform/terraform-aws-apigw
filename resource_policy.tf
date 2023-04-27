@@ -1,6 +1,4 @@
 data "aws_iam_policy_document" "allow_policy" {
-  count = var.enable_resource_policy ? 1 : 0
-
   statement {
     effect = "Allow"
 
