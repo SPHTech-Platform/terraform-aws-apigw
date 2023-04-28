@@ -30,6 +30,7 @@ API gateway module for REST API. There is no community module available for REST
 | [aws_api_gateway_deployment.deployment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment) | resource |
 | [aws_api_gateway_method_settings.method_settings](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_method_settings) | resource |
 | [aws_api_gateway_rest_api.api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api) | resource |
+| [aws_api_gateway_rest_api_policy.policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api_policy) | resource |
 | [aws_api_gateway_stage.stage](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage) | resource |
 | [aws_api_gateway_vpc_link.vpc_link](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_vpc_link) | resource |
 | [aws_cloudwatch_log_group.log_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
@@ -49,6 +50,7 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="input_caching_enabled"></a> [caching\_enabled](#input\_caching\_enabled) | Specifies whether caching is enabled for the API gateway method | `bool` | `false` | no |
 | <a name="input_data_trace_enabled"></a> [data\_trace\_enabled](#input\_data\_trace\_enabled) | Specifies the logging level for this method. | `bool` | `false` | no |
 | <a name="input_enable_global_apigw_logging"></a> [enable\_global\_apigw\_logging](#input\_enable\_global\_apigw\_logging) | Enable global apigw logging | `bool` | `false` | no |
+| <a name="input_enable_resource_policy"></a> [enable\_resource\_policy](#input\_enable\_resource\_policy) | Enable resource policy to allow other resources to Invoke this API | `bool` | `false` | no |
 | <a name="input_log_format"></a> [log\_format](#input\_log\_format) | Cloudwatch log format | `map(string)` | <pre>{<br>  "caller": "$context.identity.caller",<br>  "extendedRequestId": "$context.extendedRequestId",<br>  "httpMethod": "$context.httpMethod",<br>  "ip": "$context.identity.sourceIp",<br>  "protocol": "$context.protocol",<br>  "requestId": "$context.requestId",<br>  "requestTime": "$context.requestTime",<br>  "resourcePath": "$context.resourcePath",<br>  "responseLength": "$context.responseLength",<br>  "status": "$context.status",<br>  "user": "$context.identity.user"<br>}</pre> | no |
 | <a name="input_log_group_name"></a> [log\_group\_name](#input\_log\_group\_name) | Custom log group name. | `string` | `""` | no |
 | <a name="input_log_kms_key_id"></a> [log\_kms\_key\_id](#input\_log\_kms\_key\_id) | The ARN of the KMS Key to use when encrypting log data | `string` | `""` | no |
@@ -56,6 +58,7 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="input_logging_level"></a> [logging\_level](#input\_logging\_level) | Specifies the logging level for this method. | `string` | `"ERROR"` | no |
 | <a name="input_metrics_enabled"></a> [metrics\_enabled](#input\_metrics\_enabled) | Specifies whether Amazon CloudWatch metrics are enabled for this method. | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the API gateway | `string` | n/a | yes |
+| <a name="input_resource_policy_json"></a> [resource\_policy\_json](#input\_resource\_policy\_json) | Resource policy as JSON to attach | `string` | `null` | no |
 | <a name="input_stage"></a> [stage](#input\_stage) | Name of the API gateway stage | `string` | n/a | yes |
 | <a name="input_stage_variables"></a> [stage\_variables](#input\_stage\_variables) | Stage variables for the API gateway stage | `map(any)` | `{}` | no |
 | <a name="input_throttling_burst_limit"></a> [throttling\_burst\_limit](#input\_throttling\_burst\_limit) | The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity. | `number` | `1000` | no |
