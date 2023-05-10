@@ -22,3 +22,8 @@ output "aws_api_gateway_stage_invoke_url" {
   value       = aws_api_gateway_stage.stage.invoke_url
   description = "The URL to invoke the API pointing to the stage"
 }
+
+output "aws_api_gateway_vpc_link_id" {
+  value       = { for k, v in values(aws_api_gateway_vpc_link.vpc_link)[*] : v.name => v.id }
+  description = "VPC link id"
+}
