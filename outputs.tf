@@ -22,3 +22,8 @@ output "aws_api_gateway_stage_invoke_url" {
   value       = aws_api_gateway_stage.stage.invoke_url
   description = "The URL to invoke the API pointing to the stage"
 }
+
+output "aws_api_gateway_rest_api_root_resource_id" {
+  value       = aws_api_gateway_rest_api.api.root_resource_id
+  description = "Root resource ID of the API Gateway REST API"
+}
