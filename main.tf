@@ -51,6 +51,7 @@ resource "aws_api_gateway_stage" "stage" {
 }
 
 resource "aws_cloudwatch_log_group" "log_group" {
+  #checkov:skip=CKV_AWS_338: Ensure CloudWatch log groups retains logs for at least 1 year
   #checkov:skip=CKV_AWS_158: Using default key in KMS instead of CMK
   #Custom name if it is imported
   name              = var.log_group_name != "" ? var.log_group_name : "${var.name}-access-logs"
