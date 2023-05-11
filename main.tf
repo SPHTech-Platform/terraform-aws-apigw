@@ -53,6 +53,7 @@ resource "aws_api_gateway_stage" "stage" {
 resource "aws_cloudwatch_log_group" "log_group" {
   #checkov:skip=CKV_AWS_158: Using default key in KMS instead of CMK
   #Custom name if it is imported
+  #checkof:skip=CKV_AWS_338: Don't validate log retention days in shareable module
   name              = var.log_group_name != "" ? var.log_group_name : "${var.name}-access-logs"
   retention_in_days = var.log_retention_in_days
   kms_key_id        = var.log_kms_key_id != "" ? var.log_kms_key_id : aws_kms_key.cloudwatch[0].arn
