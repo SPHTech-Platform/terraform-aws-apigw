@@ -76,4 +76,5 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="output_aws_api_gateway_stage_execution_arn"></a> [aws\_api\_gateway\_stage\_execution\_arn](#output\_aws\_api\_gateway\_stage\_execution\_arn) | The execution ARN part to be used in lambda\_permission source\_arn when allowing API Gateway to invoke a Lambda function |
 | <a name="output_aws_api_gateway_stage_invoke_url"></a> [aws\_api\_gateway\_stage\_invoke\_url](#output\_aws\_api\_gateway\_stage\_invoke\_url) | The URL to invoke the API pointing to the stage |
 | <a name="output_aws_api_gateway_stage_name"></a> [aws\_api\_gateway\_stage\_name](#output\_aws\_api\_gateway\_stage\_name) | Stage name of the deployed api gateway stage |
+| <a name="output_aws_api_gateway_vpc_link_id"></a> [aws\_api\_gateway\_vpc\_link\_id](#output\_aws\_api\_gateway\_vpc\_link\_id) | VPC Link ID that can be used in API Gateway integrations with VPC Link |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

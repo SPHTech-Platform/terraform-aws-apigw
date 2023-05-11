@@ -23,6 +23,11 @@ output "aws_api_gateway_stage_invoke_url" {
   description = "The URL to invoke the API pointing to the stage"
 }
 
+output "aws_api_gateway_vpc_link_id" {
+  value       = { for k, v in values(aws_api_gateway_vpc_link.vpc_link)[*] : v.name => v.id }
+  description = "VPC link id"
+}
+
 output "aws_api_gateway_rest_api_root_resource_id" {
   value       = aws_api_gateway_rest_api.api.root_resource_id
   description = "Root resource ID of the API Gateway REST API"
