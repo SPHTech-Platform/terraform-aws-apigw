@@ -10,9 +10,12 @@ resource "aws_api_gateway_rest_api" "api" {
     create_before_destroy = true
   }
 
-  tags = {
-    Name = var.name
-  }
+  tags = merge(
+    {
+      Name = var.name
+    },
+    var.tags
+  )
 }
 
 resource "aws_api_gateway_deployment" "deployment" {

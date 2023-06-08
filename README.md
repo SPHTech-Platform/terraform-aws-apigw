@@ -14,7 +14,7 @@ API gateway module for REST API. There is no community module available for REST
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.63.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.0 |
 
 ## Modules
 
@@ -61,6 +61,7 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="input_resource_policy_json"></a> [resource\_policy\_json](#input\_resource\_policy\_json) | Resource policy as JSON to attach | `string` | `null` | no |
 | <a name="input_stage"></a> [stage](#input\_stage) | Name of the API gateway stage | `string` | n/a | yes |
 | <a name="input_stage_variables"></a> [stage\_variables](#input\_stage\_variables) | Stage variables for the API gateway stage | `map(any)` | `{}` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_throttling_burst_limit"></a> [throttling\_burst\_limit](#input\_throttling\_burst\_limit) | The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity. | `number` | `1000` | no |
 | <a name="input_throttling_rate_limit"></a> [throttling\_rate\_limit](#input\_throttling\_rate\_limit) | The API request steady-state rate limit | `number` | `1000` | no |
 | <a name="input_types"></a> [types](#input\_types) | Name of the API gateway stage | `list(string)` | <pre>[<br>  "REGIONAL"<br>]</pre> | no |
@@ -76,5 +77,5 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="output_aws_api_gateway_stage_execution_arn"></a> [aws\_api\_gateway\_stage\_execution\_arn](#output\_aws\_api\_gateway\_stage\_execution\_arn) | The execution ARN part to be used in lambda\_permission source\_arn when allowing API Gateway to invoke a Lambda function |
 | <a name="output_aws_api_gateway_stage_invoke_url"></a> [aws\_api\_gateway\_stage\_invoke\_url](#output\_aws\_api\_gateway\_stage\_invoke\_url) | The URL to invoke the API pointing to the stage |
 | <a name="output_aws_api_gateway_stage_name"></a> [aws\_api\_gateway\_stage\_name](#output\_aws\_api\_gateway\_stage\_name) | Stage name of the deployed api gateway stage |
-| <a name="output_aws_api_gateway_vpc_link_id"></a> [aws\_api\_gateway\_vpc\_link\_id](#output\_aws\_api\_gateway\_vpc\_link\_id) | VPC Link ID that can be used in API Gateway integrations with VPC Link |
+| <a name="output_aws_api_gateway_vpc_link_id"></a> [aws\_api\_gateway\_vpc\_link\_id](#output\_aws\_api\_gateway\_vpc\_link\_id) | VPC link id |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
