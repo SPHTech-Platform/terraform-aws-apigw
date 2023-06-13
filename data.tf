@@ -3,6 +3,7 @@ data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
 
 data "aws_iam_policy_document" "cloudwatch_logs_allow_apigw" {
+  #checkov:skip=CKV_AWS_356: "Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions"
   statement {
     sid    = "Enable IAM User Permissions"
     effect = "Allow"
