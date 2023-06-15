@@ -55,6 +55,8 @@ resource "aws_api_gateway_stage" "stage" {
 
   depends_on = [aws_api_gateway_account.api_gateway_account]
 
+  tags = var.tags
+
 }
 
 resource "aws_cloudwatch_log_group" "log_group" {
