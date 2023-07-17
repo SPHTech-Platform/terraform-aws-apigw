@@ -24,10 +24,12 @@ resource "aws_api_gateway_deployment" "deployment" {
   triggers = {
     redeployment = sha1(jsonencode([
       aws_api_gateway_rest_api.api.body,
-      var.enable_resource_policy ? aws_api_gateway_rest_api.api.policy : null
+      var.enable_resource_policy ? aws_api_gateway_rest_api_policy.policy_attachment : null
       ]
     ))
   }
+
+  depends_on = [aws_api_gateway_rest_api_policy.policy_attachment]
 
   lifecycle {
     create_before_destroy = true

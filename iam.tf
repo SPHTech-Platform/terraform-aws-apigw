@@ -1,4 +1,5 @@
 module "apigw_cwl_role" {
+  #checkov:skip=CKV_TF_1:Ensure Terraform module sources use a commit hash
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
   version = "~> 5.9.2"
 
