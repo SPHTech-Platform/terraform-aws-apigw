@@ -104,6 +104,7 @@ x-amazon-apigateway-cors:
 components:
   schemas:
     Pets:
+      #checkov:skip=CKV_OPENAPI_21:Ensure that arrays have a maximum number of items
       type: array
       items:
         $ref: '#/components/schemas/Pet'
