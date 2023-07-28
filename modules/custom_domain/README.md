@@ -18,7 +18,7 @@ Provisions option to create ACM certifcation. Cert validation needs to be done o
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.67.0 |
 
 ## Modules
 
@@ -49,4 +49,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | ARN of domain name. |
+| <a name="output_domain_name"></a> [domain\_name](#output\_domain\_name) | hostname for custom domain regional/cloudfront endpoint |
+| <a name="output_hosted_zone_id"></a> [hosted\_zone\_id](#output\_hosted\_zone\_id) | hosted zone id of custom domain |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
