@@ -28,7 +28,7 @@ variable "cert_arn" {
 variable "key_algorithm" {
   description = "Specifies the algorithm of the public and private key pair that your Amazon issued certificate uses to encrypt data"
   type        = string
-  default     = "EC_prime256v1"
+  default     = "RSA_2048"
 }
 
 variable "path_mappings" {
