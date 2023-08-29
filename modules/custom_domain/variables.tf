@@ -25,6 +25,12 @@ variable "cert_arn" {
   default     = ""
 }
 
+variable "key_algorithm" {
+  description = "Key algorithm for the cert"
+  type        = string
+  default     = "EC_prime256v1"
+}
+
 variable "path_mappings" {
   description = "List of stages the usage plan can be used "
   type = map(
