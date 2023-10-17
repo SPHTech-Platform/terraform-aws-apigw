@@ -29,7 +29,7 @@ resource "aws_api_gateway_deployment" "deployment" {
     ))
   }
 
-  depends_on = [ aws_api_gateway_rest_api_policy.policy_attachment ]
+  depends_on = [aws_api_gateway_rest_api_policy.policy_attachment]
 
   lifecycle {
     create_before_destroy = true
