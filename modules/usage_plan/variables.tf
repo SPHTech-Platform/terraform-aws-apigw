@@ -48,6 +48,24 @@ variable "period" {
   default     = "MONTH"
 }
 
+variable "enable_throttling" {
+  description = "whether to enable throttling"
+  type        = bool
+  default     = false
+}
+
+variable "burst_limit" {
+  description = "The maximum number of requests that API Gateway allows to be bursted across the entire API at the same moment."
+  type        = number
+  default     = 5000
+}
+
+variable "rate_limit" {
+  description = "The rate limit, as a number of requests per second, to apply to this usage plan."
+  type        = number
+  default     = 100
+}
+
 variable "api_keys" {
   description = "List of api keys created and assigned to the usage plan"
   type = map(
