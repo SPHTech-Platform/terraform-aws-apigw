@@ -41,7 +41,7 @@ No modules.
 | <a name="input_create_acm_cert"></a> [create\_acm\_cert](#input\_create\_acm\_cert) | Create ACM cert. create\_acm\_cert and cert\_arn Mutually exclusive. | `bool` | `false` | no |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Custom domain name | `string` | n/a | yes |
 | <a name="input_endpoint_type"></a> [endpoint\_type](#input\_endpoint\_type) | Endpoint type. | `string` | `"REGIONAL"` | no |
-| <a name="input_key_algorithm"></a> [key\_algorithm](#input\_key\_algorithm) | Specifies the algorithm of the public and private key pair that your Amazon issued certificate uses to encrypt data | `string` | `"RSA_2048"` | no |
+| <a name="input_key_algorithm"></a> [key\_algorithm](#input\_key\_algorithm) | Key algorithm for the cert | `string` | `"EC_prime256v1"` | no |
 | <a name="input_path_mappings"></a> [path\_mappings](#input\_path\_mappings) | List of stages the usage plan can be used | <pre>map(<br>    object({<br>      api_id     = string<br>      stage_name = string<br>      base_path  = string<br>    })<br>  )</pre> | n/a | yes |
 | <a name="input_security_policy"></a> [security\_policy](#input\_security\_policy) | TLS Security Policy for the domain | `string` | `"TLS_1_2"` | no |
 

@@ -21,6 +21,14 @@ resource "aws_api_gateway_usage_plan" "usage_plan" {
     }
   }
 
+  dynamic "throttle_settings" {
+    for_each = var.enable_throttling == true ? [1] : []
+    content {
+      burst_limit = var.burst_limit
+      rate_limit  = var.rate_limit
+    }
+  }
+
   tags = {
     Name = var.name
   }

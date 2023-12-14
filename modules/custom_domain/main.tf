@@ -36,10 +36,11 @@ resource "aws_api_gateway_base_path_mapping" "mapping" {
 }
 
 resource "aws_acm_certificate" "cert" {
-  count = var.create_acm_cert && var.cert_arn == "" ? 1 : 0
+  count = var.create_acm_cert ? 1 : 0
 
   domain_name       = var.domain_name
   validation_method = "DNS"
+  key_algorithm     = var.key_algorithm
 
   lifecycle {
     create_before_destroy = true
