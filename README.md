@@ -14,7 +14,7 @@ API gateway module for REST API. There is no community module available for REST
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.67.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.31.0 |
 
 ## Modules
 
@@ -74,6 +74,7 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="output_aws_api_gateway_execution_arn"></a> [aws\_api\_gateway\_execution\_arn](#output\_aws\_api\_gateway\_execution\_arn) | The execution ARN part to be used in lambda\_permission source\_arn when allowing API Gateway to invoke a Lambda function |
 | <a name="output_aws_api_gateway_rest_api_id"></a> [aws\_api\_gateway\_rest\_api\_id](#output\_aws\_api\_gateway\_rest\_api\_id) | REST API id of the created api |
 | <a name="output_aws_api_gateway_rest_api_root_resource_id"></a> [aws\_api\_gateway\_rest\_api\_root\_resource\_id](#output\_aws\_api\_gateway\_rest\_api\_root\_resource\_id) | Root resource ID of the API Gateway REST API |
+| <a name="output_aws_api_gateway_stage_arn"></a> [aws\_api\_gateway\_stage\_arn](#output\_aws\_api\_gateway\_stage\_arn) | ARN (for management) of apigw stage, use this when attaching Web ACL |
 | <a name="output_aws_api_gateway_stage_execution_arn"></a> [aws\_api\_gateway\_stage\_execution\_arn](#output\_aws\_api\_gateway\_stage\_execution\_arn) | The execution ARN part to be used in lambda\_permission source\_arn when allowing API Gateway to invoke a Lambda function |
 | <a name="output_aws_api_gateway_stage_invoke_url"></a> [aws\_api\_gateway\_stage\_invoke\_url](#output\_aws\_api\_gateway\_stage\_invoke\_url) | The URL to invoke the API pointing to the stage |
 | <a name="output_aws_api_gateway_stage_name"></a> [aws\_api\_gateway\_stage\_name](#output\_aws\_api\_gateway\_stage\_name) | Stage name of the deployed api gateway stage |
