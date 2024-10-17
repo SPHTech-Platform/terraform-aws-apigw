@@ -1,18 +1,18 @@
 locals {
   common_tags = {
     "sph:env"          = "dev"
-    "sph:app-tier"     = "1"
-    "sph:appIC"        = "Prem Kumar Kailasu"
-    "sph:appteam"      = "dstf"
-    "sph:managed-by"   = "dstf"
-    "sph:cost-centre"  = "1691"
-    "sph:product"      = "hcp"
-    "sph:biz-dept"     = "DPE"
-    "sph:biz-owner"    = "Jensen"
-    "sph:biz-email"    = "jenboey@sph.com.sg"
-    "sph:creator-name" = "dstf"
+    "sph:app-tier"     = "3"
+    "sph:appIC"        = "john"
+    "sph:appteam"      = "abc"
+    "sph:managed-by"   = "abc"
+    "sph:cost-centre"  = "12345"
+    "sph:product"      = "abc"
+    "sph:biz-dept"     = "abc"
+    "sph:biz-owner"    = "john"
+    "sph:biz-email"    = "john@example.com"
+    "sph:creator-name" = "john"
     "sph:creator-email" = join(":", [
-      "sphtech-dstf-usrgrp@sph.com.sg"
+      "john@example.com"
     ])
 
     "sph:provisioned-via" = "terraform"
