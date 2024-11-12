@@ -3,7 +3,7 @@ locals {
     "sph:env"          = "dev"
     "sph:app-tier"     = "3"
     "sph:appIC"        = "john"
-    "sph:appteam"      = "abc"
+    "sph:appteam"      = "abcd"
     "sph:managed-by"   = "abc"
     "sph:cost-centre"  = "12345"
     "sph:product"      = "abc"
