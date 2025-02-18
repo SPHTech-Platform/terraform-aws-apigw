@@ -155,3 +155,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "tf_resources_hash" {
+  description = "for api gateways that are not using body_template and are using terraform resources"
+  type        = string
+  default     = ""
+}

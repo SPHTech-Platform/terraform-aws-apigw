@@ -24,6 +24,7 @@ resource "aws_api_gateway_deployment" "deployment" {
 
   triggers = {
     redeployment = sha1(jsonencode([
+      var.tf_resources_hash,
       aws_api_gateway_rest_api.api.body,
       var.enable_resource_policy ? var.resource_policy_json : null
       ]
