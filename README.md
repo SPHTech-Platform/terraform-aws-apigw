@@ -47,6 +47,7 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="input_cache_cluster_enabled"></a> [cache\_cluster\_enabled](#input\_cache\_cluster\_enabled) | Specifies whether a cache cluster is enabled for the stage. | `bool` | `false` | no |
 | <a name="input_cache_cluster_size"></a> [cache\_cluster\_size](#input\_cache\_cluster\_size) | The size of the cache cluster for the stage, if enabled | `string` | `"0.5"` | no |
 | <a name="input_cache_data_encrypted"></a> [cache\_data\_encrypted](#input\_cache\_data\_encrypted) | Specifies whether a cache data needs to be encrypted. | `bool` | `true` | no |
+| <a name="input_cache_ttl"></a> [cache\_ttl](#input\_cache\_ttl) | The cache TTL of the stage | `number` | `300` | no |
 | <a name="input_caching_enabled"></a> [caching\_enabled](#input\_caching\_enabled) | Specifies whether caching is enabled for the API gateway method | `bool` | `false` | no |
 | <a name="input_data_trace_enabled"></a> [data\_trace\_enabled](#input\_data\_trace\_enabled) | Specifies the logging level for this method. | `bool` | `false` | no |
 | <a name="input_enable_global_apigw_logging"></a> [enable\_global\_apigw\_logging](#input\_enable\_global\_apigw\_logging) | Enable global apigw logging | `bool` | `false` | no |
@@ -62,6 +63,7 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="input_stage"></a> [stage](#input\_stage) | Name of the API gateway stage | `string` | n/a | yes |
 | <a name="input_stage_variables"></a> [stage\_variables](#input\_stage\_variables) | Stage variables for the API gateway stage | `map(any)` | `{}` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
+| <a name="input_tf_resources_hash"></a> [tf\_resources\_hash](#input\_tf\_resources\_hash) | for api gateways that are not using body\_template and are using terraform resources | `string` | `""` | no |
 | <a name="input_throttling_burst_limit"></a> [throttling\_burst\_limit](#input\_throttling\_burst\_limit) | The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity. | `number` | `1000` | no |
 | <a name="input_throttling_rate_limit"></a> [throttling\_rate\_limit](#input\_throttling\_rate\_limit) | The API request steady-state rate limit | `number` | `1000` | no |
 | <a name="input_types"></a> [types](#input\_types) | Name of the API gateway stage | `list(string)` | <pre>[<br>  "REGIONAL"<br>]</pre> | no |
@@ -80,3 +82,4 @@ API gateway module for REST API. There is no community module available for REST
 | <a name="output_aws_api_gateway_stage_name"></a> [aws\_api\_gateway\_stage\_name](#output\_aws\_api\_gateway\_stage\_name) | Stage name of the deployed api gateway stage |
 | <a name="output_aws_api_gateway_vpc_link_id"></a> [aws\_api\_gateway\_vpc\_link\_id](#output\_aws\_api\_gateway\_vpc\_link\_id) | VPC link id |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

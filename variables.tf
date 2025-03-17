@@ -78,6 +78,12 @@ variable "cache_cluster_size" {
   default     = "0.5"
 }
 
+variable "cache_ttl" {
+  description = "The cache TTL of the stage"
+  type        = number
+  default     = 300
+}
+
 variable "log_group_name" {
   description = "Custom log group name."
   type        = string

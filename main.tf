@@ -97,6 +97,7 @@ resource "aws_api_gateway_method_settings" "method_settings" {
     throttling_rate_limit  = var.throttling_rate_limit
     cache_data_encrypted   = var.cache_data_encrypted
     caching_enabled        = var.caching_enabled
+    cache_ttl_in_seconds   = var.cache_ttl
   }
 }
 
