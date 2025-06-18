@@ -13,6 +13,11 @@ output "aws_api_gateway_stage_name" {
   description = "Stage name of the deployed api gateway stage"
 }
 
+output "aws_api_gateway_log_group_arn" {
+  value       = aws_cloudwatch_log_group.log_group.arn
+  description = "ARN of the CloudWatch log group for API Gateway access logs"
+}
+
 output "aws_api_gateway_stage_execution_arn" {
   value       = aws_api_gateway_stage.stage.execution_arn
   description = "The execution ARN part to be used in lambda_permission source_arn when allowing API Gateway to invoke a Lambda function"
