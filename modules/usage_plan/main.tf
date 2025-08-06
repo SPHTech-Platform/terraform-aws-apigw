@@ -41,10 +41,10 @@ resource "aws_api_gateway_api_key" "key" {
   description = "API Key for ${each.value.key_name}"
   enabled     = each.value.enabled
 
-  tags = {
-    Name = each.value.key_name
-  }
-
+  tags = merge(
+    { Name = each.value.key_name },
+    try(each.value.extra_tags, {})
+  )
 }
 
 resource "aws_api_gateway_usage_plan_key" "main" {
