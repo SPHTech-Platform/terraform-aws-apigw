@@ -13,6 +13,16 @@ variable "security_policy" {
   default     = "TLS_1_2"
 }
 
+variable "endpoint_access_mode" {
+  type        = string
+  description = "Endpoint access mode for the custom domain. Required for domain names that use security policies that start with `SecurityPolicy_*`. Valid values: `BASIC`, `STRICT`."
+  default     = null
+  validation {
+    condition     = var.endpoint_access_mode == null || contains(["BASIC", "STRICT"], coalesce(var.endpoint_access_mode, "BASIC"))
+    error_message = "Valid values for endpoint_access_mode are BASIC, STRICT, or null."
+  }
+}
+
 variable "create_acm_cert" {
   description = "Create ACM cert. create_acm_cert and cert_arn Mutually exclusive. "
   type        = bool

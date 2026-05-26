@@ -5,6 +5,7 @@ resource "aws_api_gateway_domain_name" "domain_regional" {
   domain_name              = var.domain_name
   regional_certificate_arn = var.cert_arn == "" ? aws_acm_certificate.cert[0].arn : var.cert_arn
   security_policy          = var.security_policy
+  endpoint_access_mode     = var.endpoint_access_mode
 
   endpoint_configuration {
     types = ["REGIONAL"]
@@ -15,14 +16,14 @@ resource "aws_api_gateway_domain_name" "domain_regional" {
 resource "aws_api_gateway_domain_name" "domain_edge" {
   count = var.endpoint_type == "EDGE" ? 1 : 0
 
-  domain_name     = var.domain_name
-  certificate_arn = var.cert_arn == "" ? aws_acm_certificate.cert[0].arn : var.cert_arn
-  security_policy = var.security_policy
+  domain_name          = var.domain_name
+  certificate_arn      = var.cert_arn == "" ? aws_acm_certificate.cert[0].arn : var.cert_arn
+  security_policy      = var.security_policy
+  endpoint_access_mode = var.endpoint_access_mode
 
   endpoint_configuration {
     types = ["EDGE"]
   }
-
 }
 
 resource "aws_api_gateway_base_path_mapping" "mapping" {
