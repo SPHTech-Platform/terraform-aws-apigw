@@ -39,3 +39,8 @@ example: *tfplan*
 terraform.rc
 
 *.DS_Store
+
+# Local Antigravity agent & learnings tracking
+.learnings/
+.agents/
+GEMINI.md
