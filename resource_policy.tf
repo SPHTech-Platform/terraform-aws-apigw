@@ -11,6 +11,7 @@ resource "aws_api_gateway_rest_api_policy" "policy_attachment" {
   policy      = var.resource_policy_json
 
   lifecycle {
+    create_before_destroy = false
     replace_triggered_by = [
       terraform_data.body_change_trigger
     ]
