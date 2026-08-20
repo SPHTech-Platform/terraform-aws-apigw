@@ -5,7 +5,7 @@ locals {
         jsondecode(var.body_template),
         { "x-amazon-apigateway-policy" = jsondecode(var.resource_policy_json) }
       ))
-    ) : (
+      ) : (
       format("%s\nx-amazon-apigateway-policy:\n%s", var.body_template, indent(2, var.resource_policy_json))
     )
   ) : var.body_template
@@ -40,6 +40,10 @@ resource "aws_api_gateway_deployment" "deployment" {
       var.enable_resource_policy ? var.resource_policy_json : null
       ]
     ))
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
