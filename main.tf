@@ -1,5 +1,18 @@
+locals {
+  body_spec = var.enable_resource_policy && var.resource_policy_json != null && var.resource_policy_json != "" ? (
+    can(jsondecode(var.body_template)) ? (
+      jsonencode(merge(
+        jsondecode(var.body_template),
+        { "x-amazon-apigateway-policy" = jsondecode(var.resource_policy_json) }
+      ))
+    ) : (
+      format("%s\nx-amazon-apigateway-policy:\n%s", var.body_template, indent(2, var.resource_policy_json))
+    )
+  ) : var.body_template
+}
+
 resource "aws_api_gateway_rest_api" "api" {
-  body = var.body_template
+  body = local.body_spec
 
   name = var.name
 
@@ -19,7 +32,6 @@ resource "aws_api_gateway_rest_api" "api" {
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
-  depends_on  = [aws_api_gateway_rest_api_policy.policy_attachment]
   rest_api_id = aws_api_gateway_rest_api.api.id
 
   triggers = {
@@ -28,10 +40,6 @@ resource "aws_api_gateway_deployment" "deployment" {
       var.enable_resource_policy ? var.resource_policy_json : null
       ]
     ))
-  }
-
-  lifecycle {
-    create_before_destroy = true
   }
 }
 
