@@ -12,9 +12,9 @@ locals {
 }
 
 resource "aws_api_gateway_rest_api" "api" {
-  body = local.body_spec
-
-  name = var.name
+  body              = local.body_spec
+  name              = var.name
+  put_rest_api_mode = var.put_rest_api_mode
 
   endpoint_configuration {
     types = var.types

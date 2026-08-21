@@ -161,3 +161,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "put_rest_api_mode" {
+  description = "Mode when updating the REST API (overwrite or merge). Overwrite ensures deleted routes are removed from AWS Console."
+  type        = string
+  default     = "overwrite"
+}
