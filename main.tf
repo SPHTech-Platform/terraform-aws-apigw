@@ -6,7 +6,7 @@ locals {
         { "x-amazon-apigateway-policy" = jsondecode(var.resource_policy_json) }
       ))
       ) : (
-      format("%s\nx-amazon-apigateway-policy:\n%s", var.body_template, indent(2, var.resource_policy_json))
+      format("%s\nx-amazon-apigateway-policy:\n  %s", var.body_template, jsonencode(jsondecode(var.resource_policy_json)))
     )
   ) : var.body_template
 }

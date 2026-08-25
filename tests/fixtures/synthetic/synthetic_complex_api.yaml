@@ -1,0 +1,22 @@
+swagger: "2.0"
+info:
+  title: "synthetic-apigw-test"
+  version: "1.0.0"
+paths:
+  /v1/health:
+    get:
+      summary: "Health Check Endpoint"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: "OK"
+      x-amazon-apigateway-integration:
+        type: "mock"
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        responses:
+          default:
+            statusCode: "200"
+      x-amazon-apigateway-auth:
+        type: AWS_IAM
