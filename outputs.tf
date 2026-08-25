@@ -42,3 +42,8 @@ output "aws_api_gateway_stage_arn" {
   value       = aws_api_gateway_stage.stage.arn
   description = "ARN (for management) of apigw stage, use this when attaching Web ACL"
 }
+
+output "body_spec" {
+  value       = local.body_spec
+  description = "The computed OpenAPI body specification after merging resource policy if enabled."
+}
