@@ -1,0 +1,25 @@
+swagger: "2.0"
+info:
+  title: "synthetic-apigw-embedded-policy-test"
+  version: "1.0.0"
+paths:
+  /v1/health:
+    get:
+      summary: "Health Check Endpoint"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: "OK"
+      x-amazon-apigateway-integration:
+        type: "mock"
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        responses:
+          default:
+            statusCode: "200"
+      x-amazon-apigateway-auth:
+        type: AWS_IAM
+
+x-amazon-apigateway-policy:
+  {"Version":"2012-10-17","Statement":[{"Sid":"AllowHealthEndpoint","Effect":"Allow","Action":"execute-api:Invoke","Resource":"arn:aws:execute-api:ap-southeast-1:123456789012:*/*/GET/v1/health","Principal":{"AWS":"*"}},{"Sid":"AllowSyntheticRoleAccess","Effect":"Allow","Action":"execute-api:Invoke","Resource":"arn:aws:execute-api:ap-southeast-1:123456789012:*/*/*/*","Principal":{"AWS":"arn:aws:iam::123456789012:role/synthetic-test-role"}}]}
