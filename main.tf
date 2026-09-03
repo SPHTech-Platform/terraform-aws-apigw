@@ -13,6 +13,7 @@ locals {
 
 resource "aws_api_gateway_rest_api" "api" {
   body              = local.body_spec
+  policy            = var.enable_resource_policy && var.resource_policy_json != null && var.resource_policy_json != "" ? var.resource_policy_json : null
   name              = var.name
   put_rest_api_mode = var.put_rest_api_mode
 
