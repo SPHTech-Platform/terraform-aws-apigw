@@ -60,8 +60,12 @@ resource "aws_api_gateway_stage" "stage" {
   deployment_id = aws_api_gateway_deployment.deployment.id
   rest_api_id   = aws_api_gateway_rest_api.api.id
 
-  stage_name            = var.stage
-  variables             = length(var.vpc_links) > 0 ? merge({ for k, v in values(aws_api_gateway_vpc_link.vpc_link)[*] : v.name => v.id }, var.stage_variables) : var.stage_variables
+  stage_name = var.stage
+  variables = merge(
+    { for v in values(aws_api_gateway_vpc_link.vpc_link) : v.name => v.id },
+    { for v in values(aws_apigatewayv2_vpc_link.vpc_link) : v.name => v.id },
+    var.stage_variables
+  )
   xray_tracing_enabled  = true
   cache_cluster_enabled = var.cache_cluster_enabled
   cache_cluster_size    = var.cache_cluster_size
