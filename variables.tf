@@ -132,7 +132,20 @@ variable "vpc_links" {
   type = map(
     object({
       description = string
+      name        = optional(string)
       target_arns = list(string)
+    })
+  )
+  default = {}
+}
+
+variable "vpc_links_v2" {
+  description = "VPC links for API Gateway v2 HTTP APIs. The map key denotes the VPC link name."
+  type = map(
+    object({
+      name               = optional(string)
+      security_group_ids = list(string)
+      subnet_ids         = list(string)
     })
   )
   default = {}
