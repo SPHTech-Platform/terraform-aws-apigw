@@ -30,7 +30,12 @@ output "aws_api_gateway_stage_invoke_url" {
 
 output "aws_api_gateway_vpc_link_id" {
   value       = { for k, v in values(aws_api_gateway_vpc_link.vpc_link)[*] : v.name => v.id }
-  description = "VPC link id"
+  description = "VPC link v1 IDs keyed by VPC link name"
+}
+
+output "aws_apigatewayv2_vpc_link_id" {
+  value       = { for v in values(aws_apigatewayv2_vpc_link.vpc_link) : v.name => v.id }
+  description = "VPC link v2 IDs keyed by VPC link name"
 }
 
 output "aws_api_gateway_rest_api_root_resource_id" {
